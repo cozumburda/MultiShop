@@ -18,13 +18,13 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers
             var values = await _repository.GetByIdAsync(query.Id);
             return new GetOrderDetailByIdQueryResult
             {
-               OrderDetailId=values.OrderDetailId,
-               ProductAmount=values.ProductAmount,
-               ProductId=values.ProductId,
-               ProductName=values.ProductName,
-               OrderingId=values.OrderingId,
-               ProductPrice=values.ProductPrice,
-               ProductTotalPrice=values.ProductTotalPrice,
+                OrderDetailId = values.OrderDetailId,
+                ProductAmount = values.ProductAmount,
+                ProductId = values.ProductId,
+                ProductName = values.ProductName,
+                OrderingId = values.OrderingId,
+                ProductPrice = values.ProductPrice,
+                ProductTotalPrice = values.ProductTotalPrice,
             };
         }
     }

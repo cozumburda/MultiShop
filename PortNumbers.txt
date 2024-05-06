@@ -1,0 +1,6 @@
+7070:Catalog
+7071:Discount
+7072:Order
+7073:Cargo
+7074:Basket
+5001:Identity

@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.CategoryDtos;
 using MultiShop.Catalog.Services.CategoryServices;
 
 namespace MultiShop.Catalog.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
@@ -18,13 +19,13 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet]
         public async Task<IActionResult> CategoryList()
         {
-            var values=await _categoryService.GetAllCategoryAsync();
+            var values = await _categoryService.GetAllCategoryAsync();
             return Ok(values);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCategoryById(string id)
         {
-            var values=await _categoryService.GetByIdCategoryAsync(id);
+            var values = await _categoryService.GetByIdCategoryAsync(id);
             return Ok(values);
         }
         [HttpPost]
