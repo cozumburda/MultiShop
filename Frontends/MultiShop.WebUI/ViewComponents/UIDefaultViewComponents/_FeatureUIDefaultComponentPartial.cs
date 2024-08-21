@@ -1,12 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MultiShop.WebUI.Services.CatalogServices.FeatureServices;
 
 namespace MultiShop.WebUI.ViewComponents.UIDefaultViewComponents
 {
-    public class _FeatureUIDefaultComponentPartial:ViewComponent
+    public class _FeatureUIDefaultComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly IFeatureService _featureService;
+        public _FeatureUIDefaultComponentPartial(IFeatureService featureService)
         {
-            return View();
+            _featureService = featureService;
+        }
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var values = await _featureService.GetAllFeatureAsync();
+            return View(values);
         }
     }
 }

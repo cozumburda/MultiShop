@@ -1,0 +1,27 @@
+﻿@model CreateProductImageDto
+@{
+    ViewData["Title"] = "CreateProductImage";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Görsel Eklenen Ürün : @ViewBag.pName</h4>
+                <br />
+                <form method="post" action="/Admin/ProductAdminImage/CreateProductImage/">
+                    <div class="form-group">                        
+                        <input type="hidden" asp-for="ProductID" value="@ViewBag.pId">
+                        <br />
+                        <label for="basicInput">Görsel Seçin veya Görsel Yolu Girin</label>
+                        <input type="file" class="form-control" id="basicInput" name="image3">                        
+                        <input type="text" asp-for="ProductImage1" class="form-control" id="basicInput" placeholder="Ürün Görsel Yolu">
+                        <br />                        
+                    </div>
+                    <button type="submit" class="btn btn-primary">Görseli Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,23 @@
+﻿@model GetByIdDiscountCouponDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/_UILayout.cshtml";
+}
+<div class="container text-center">
+<table class="table table-responsive">
+    <tr>
+        <td>#</td>
+        <td>Kod</td>
+        <td>Oran</td>
+        <td>Geçerlilik Tarihi</td>
+        <td>Aktif mi?</td>
+    </tr>
+    <tr>
+        <td>@Model.CouponId</td>
+        <td>@Model.Code</td>
+        <td>@Model.Rate</td>
+        <td>@Model.ValidDate</td>
+        <td>@Model.IsActive</td>
+    </tr>
+</table>
+</div>

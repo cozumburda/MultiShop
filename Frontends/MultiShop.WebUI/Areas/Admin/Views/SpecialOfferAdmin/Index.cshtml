@@ -1,0 +1,47 @@
+﻿@model List<ResultSpecialOfferDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+<section class="content container-fluid">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <br />
+            <div class="bs-example" data-example-id="bordered-table">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Teklif Başlığı</th>
+                            <th>Teklif Alt Başlığı</th>
+                            <th class="text-center">Görsel</th>
+                            <th class="text-center">Sil</th>
+                            <th class="text-center">Güncelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+
+                            <tr>
+                                <th scope="row">@count</th>
+                                <td>@item.Title</td>
+                                <td>@item.SubTitle</td>
+                                <td class="text-center"><img src="@item.ImageUrl" style="height:60px" class="img-circle" /></td>
+                                <td class="text-center"><a href="/Admin/SpecialOfferAdmin/DeleteSpecialOffer/@item.SpecialOfferId" class="btn btn-danger btn-sm">Sil</a></td>
+                                <td class="text-center"><a href="/Admin/SpecialOfferAdmin/UpdateSpecialOffer/@item.SpecialOfferId" class="btn btn-warning btn-sm">Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <a href="/Admin/SpecialOfferAdmin/CreateSpecialOffer/" class="btn btn-primary btn-sm">Yeni Özel Teklif Ekle</a>
+        </div>
+    </div>
+</section>
+

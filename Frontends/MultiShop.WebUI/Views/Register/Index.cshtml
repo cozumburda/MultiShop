@@ -1,0 +1,73 @@
+﻿@model CreateRegisterDto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>MultiShop Kayıt Sayfası</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="~/colorlib-regform-30/css/opensans-font.css">
+    <link rel="stylesheet" type="text/css" href="~/colorlib-regform-30/fonts/line-awesome/css/line-awesome.min.css">
+    <!-- Jquery -->
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+    <!-- Main Style Css -->
+    <link rel="stylesheet" href="~/colorlib-regform-30/css/style.css" />
+</head>
+<body class="form-v4">
+    <div class="page-content">
+        <div class="form-v4-content">
+            <div class="form-left">
+                <h2>MultiShop E-Ticaret</h2>
+                <p class="text-1">MultiShop projemiz üzerinden E-Ticaret işlemlerini gerçekleştirebilmek, indirimli ürünler ve fırsatlardan haberdar olmak adına 1 dakikada kayıt işlemini gerçekleştirin</p>
+                <p class="text-2">Eğer Bir hesabınız varsa kayıt olmaya gerek duymadan aşağıdaki link üzerinden giriş yapabilirsiniz.</p>
+                <div class="form-left-last">
+                    <a href="/Login/Index/" class="account text-black" style="padding:15px">Giriş Yap</a>
+                </div>
+            </div>
+            <form class="form-detail" method="post">
+                <h2>MultiShop Kayıt Formu</h2>
+                <div class="form-group">
+                    <div class="form-row form-row-1">
+                        <label for="first_name">Adınız</label>
+                        <input type="text" asp-for="Name" id="first_name" class="input-text" required>
+                    </div>
+                    <div class="form-row form-row-1">
+                        <label for="last_name">Soyadınız</label>
+                        <input type="text" asp-for="Surname" id="last_name" class="input-text" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="your_email">Email Adresiniz</label>
+                    <input type="email" asp-for="Email" id="your_email" class="input-text" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}">
+                </div>
+                <div class="form-row">
+                    <label for="user_name">Kullanıcı Adınız</label>
+                    <input type="text" asp-for="Username" id="user_name" class="input-text" required>
+                </div>
+                <div class="form-group">
+                    <div class="form-row form-row-1 ">
+                        <label for="password">Şifre</label>
+                        <input type="password" asp-for="Password" id="password" class="input-text" required>
+                    </div>
+                    <div class="form-row form-row-1">
+                        <label for="comfirm-password">Şifre Tekrar</label>
+                        <input type="password" asp-for="ConfirmPassword" id="comfirm_password" class="input-text" required>
+                    </div>
+                </div>
+                <div class="form-checkbox">
+                    <label class="form-check-inline">
+                        <p>Şartları Okudum <a href="#" class="text">Kabul Ediyorum</a></p>
+                        <input type="checkbox" asp-for="TermsIsAccepted" id="terms_accepted" required><span class="checkmark"></span>
+                    </label>
+                </div>
+                <button type="submit" class="register" style="padding:15px" id="send">Kayıt Ol</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

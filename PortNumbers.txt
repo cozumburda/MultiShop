@@ -1,6 +1,10 @@
+5000:Ocelot
 7070:Catalog
 7071:Discount
 7072:Order
 7073:Cargo
 7074:Basket
+7075:Comment
+7076:Payment
+7077:Images
 5001:Identity

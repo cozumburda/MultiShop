@@ -5,7 +5,7 @@ using MultiShop.Catalog.Services.ProductDetailServices;
 
 namespace MultiShop.Catalog.Controllers
 {
-    
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductDetailsController : ControllerBase
@@ -28,13 +28,19 @@ namespace MultiShop.Catalog.Controllers
             var values = await _productDetailService.GetByIdProductDetailAsync(id);
             return Ok(values);
         }
+        [HttpGet("GetProductDetailByProductId/{id}")]
+        public async Task<IActionResult> GetProductDetailByProductId(string id)
+        {
+            var values = await _productDetailService.GetByProductIdProductDetailAsync(id);
+            return Ok(values);
+        }
         [HttpPost]
         public async Task<IActionResult> CreateProductDetail(CreateProductDetailDto createProductDetailDto)
         {
             await _productDetailService.CreateProductDetailAsync(createProductDetailDto);
             return Ok("Ürün Detayı Başarıyla Eklendi");
         }
-        [HttpDelete]
+        [HttpDelete("DeleteProductDetail/{id}")]
         public async Task<IActionResult> DeleteProductDetail(string id)
         {
             await _productDetailService.DeleteProductDetailAsync(id);

@@ -1,0 +1,45 @@
+﻿@model List<ResultBrandDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+<section class="content container-fluid">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <br />
+            <div class="bs-example" data-example-id="bordered-table">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Marka Adı</th>                            
+                            <th class="text-center">Görsel</th>
+                            <th class="text-center">Sil</th>
+                            <th class="text-center">Güncelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+
+                            <tr>
+                                <th scope="row">@count</th>
+                                <td>@item.BrandName</td>                                
+                                <td class="text-center"><img src="@item.ImageUrl" style="height:60px" class="img-circle" /></td>
+                                <td class="text-center"><a href="/Admin/BrandAdmin/DeleteBrand/@item.BrandID" class="btn btn-danger btn-sm">Sil</a></td>
+                                <td class="text-center"><a href="/Admin/BrandAdmin/UpdateBrand/@item.BrandID" class="btn btn-warning btn-sm">Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <a href="/Admin/BrandAdmin/CreateBrand/" class="btn btn-primary btn-sm">Yeni Marka Ekle</a>
+        </div>
+    </div>
+</section>
+

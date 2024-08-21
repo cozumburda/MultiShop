@@ -1,0 +1,36 @@
+﻿@model CreateProductDto
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Yeni Ürün Ekleme Sayfası</h4>
+                <br />
+                <form method="post">
+                    <div class="form-group">
+                        <label for="basicInput">Ürün Adı</label>
+                        <input type="text" asp-for="ProductName" class="form-control" id="basicInput" placeholder="Ürün Adı">
+                        <br />
+                        <label for="basicInput">Ürün Fiyatı</label>
+                        <input type="text" asp-for="ProductPrice" class="form-control" id="basicInput" placeholder="Ürün Fiyatı">
+                        <br />
+                        <label for="basicInput">Ürün Açıklaması</label>
+                        <textarea asp-for="ProductDescription" rows="5" cols="1" class="form-control" id="basicInput" placeholder="Ürün Açıklaması"></textarea>
+                        <br />
+                        <label for="basicInput">Ürün Görseli</label>
+                        <input type="text" asp-for="ProductImageUrl" class="form-control" id="basicInput" placeholder="Ürün Görseli">
+                        <br />
+                        <label>Kategori</label>
+                        @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.CategoryValues, new { @class = "form-control" })
+                        @* <select class="form-control" asp-for="CategoryID" asp-items="ViewBag.CategoryValues"></select> *@
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ürünü Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

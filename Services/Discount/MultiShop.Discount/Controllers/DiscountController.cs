@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Discount.Dtos;
 using MultiShop.Discount.Services;
@@ -36,18 +35,23 @@ namespace MultiShop.Discount.Controllers
             await _discountService.CreateDiscountCouponAsync(createCouponDto);
             return Ok("Kupon Başarıyla Oluşturuldu");
         }
-        [HttpDelete]
+        [HttpDelete("DeleteDiscountCoupon/{id}")]
         public async Task<IActionResult> DeleteDiscountCoupon(int id)
         {
-           await _discountService.DeleteDiscountCouponAsync(id);
+            await _discountService.DeleteDiscountCouponAsync(id);
             return Ok("Kupon Silindi");
         }
-
         [HttpPut]
         public async Task<IActionResult> UpdateDiscountCoupon(UpdateDiscountCouponDto updateCouponDto)
         {
             await _discountService.UpdateDiscountCouponAsync(updateCouponDto);
             return Ok("Kupon Başarı ile Güncellendi");
+        }
+        [HttpGet("GetDiscountCouponByCode/{code}")]        
+        public async Task<IActionResult> GetDiscountCouponByCode(string code)
+        {
+            var value = await _discountService.GetByCouponCodeAndIsValidDiscountCouponAsync(code);
+            return Ok(value);
         }
     }
 }

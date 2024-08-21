@@ -1,0 +1,26 @@
+﻿
+<div class="col-lg-4">
+    @if (ViewData["codeRate"]==null)
+    {
+        <form class="mb-30" method="get" action="/ShoppingCard/Index/">
+            <div class="input-group">
+                <input type="text" class="form-control border-0 p-4" name="code" placeholder="Kupon Kodu">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Kuponu Uygula</button>
+                </div>
+            </div>
+        </form>
+    }
+    else
+    {
+        <form class="mb-30" method="get" action="/ShoppingCard/Index/">
+            <div class="input-group">
+                <input type="text" class="form-control border-0 p-4" value="@ViewBag.codeName" name="code" placeholder="Kupon Kodu" disabled>
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-danger">Kuponu İptal Et</button>
+                </div>
+            </div>
+        </form>
+    }
+    @await Component.InvokeAsync("_BasketTotalAmountComponentPartial")
+</div>

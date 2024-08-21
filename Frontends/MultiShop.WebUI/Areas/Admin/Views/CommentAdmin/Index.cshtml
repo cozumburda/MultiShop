@@ -1,0 +1,69 @@
+﻿@model List<ResultCommentDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+    string color1 = "";
+    string color2 = "";
+    string txt1 = "";
+    string txt2 = "";
+}
+
+<section class="content container-fluid">
+    <div class="col-md-12">
+        <div class="chart-box">
+            @*  <h4>Kategori Listesi</h4>
+            <p>Kategori ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz</p> *@
+            <br />
+            <div class="bs-example" data-example-id="bordered-table">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Kullanıcı</th>
+                            <th>Yorum</th>
+                            <th class="text-center">Tarih</th>
+                            <th class="text-center">Durum</th>
+                            <th class="text-center">Sil</th>
+                            <th class="text-center">Güncelle / Aktif Pasif Yap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            switch (item.Status)
+                            {
+                                case true:
+                                    color1 = "success";
+                                    color2 = "danger";
+                                    txt1 = "Aktif";
+                                    txt2 = "Pasif Yap";
+                                    break;
+                                case false:
+                                    color1 = "danger";
+                                    color2 = "success";
+                                    txt1 = "Pasif";
+                                    txt2 = "Aktif Yap";
+                                    break;
+                            }
+                            <tr>
+                                <th scope="row">@count</th>
+                                <td>@item.NameSurname</td>
+                                <td class="text-center">@item.CommentDetail</td>
+                                <td class="text-center">@item.CreatedDate.ToString("dd-MMM-yyyy")</td>
+                                <td class="text-center"> <span class="badge btn-@color1"> @txt1 </span> </td>
+                                <td class="text-center"><a href="/Admin/CommentAdmin/DeleteComment/@item.UserCommentId" class="btn btn-danger btn-sm">Sil</a></td>
+                                <td class="text-center"><a href="/Admin/CommentAdmin/UpdateComment/@item.UserCommentId" class="btn btn-warning btn-sm">Güncelle</a>
+                                    <a href="/Admin/CommentAdmin/ChangeStatusComment/@item.UserCommentId" class="btn btn-@color2 btn-sm">@txt2</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</section>

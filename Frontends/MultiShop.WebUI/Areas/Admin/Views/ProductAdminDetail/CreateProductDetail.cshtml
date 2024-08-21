@@ -1,0 +1,31 @@
+﻿@model CreateProductDetailDto
+
+@{
+    ViewData["Title"] = "CreateProductDetail";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+<h3 class="text-center text-danger">@TempData["detailUpdateError"]</h3>
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Ürün Açıklama ve Bilgi Ekleme Sayfası</h4>
+                <br />
+                <form method="post" action="/Admin/ProductAdminDetail/CreateProductDetail/">
+                    <div class="form-group">                        
+                        <input type="hidden" asp-for="ProductID" value="@ViewBag.pId">
+                        <label>Ürün Açıklaması</label>
+                        <textarea type="text" asp-for="ProductDescription" rows="5" class="form-control" placeholder="Ürün Açıklaması"></textarea>
+                        <br />
+                        <label>Ürün Bilgisi</label>
+                        <textarea type="text" asp-for="ProductInfo" rows="5" class="form-control" placeholder="Ürün Bilgisi"></textarea>
+                        <br />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+

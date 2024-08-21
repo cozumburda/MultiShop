@@ -1,12 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
 
 namespace MultiShop.WebUI.ViewComponents.UIDefaultViewComponents
 {
-    public class _CategoriesUIDefaultComponentPartial:ViewComponent
+    public class _CategoriesUIDefaultComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly ICategoryService _categoryService;
+        public _CategoriesUIDefaultComponentPartial(ICategoryService categoryService)
         {
-            return View();
+            _categoryService = categoryService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var values = await _categoryService.GetAllCategoryAsync();
+            return View(values);
         }
     }
 }

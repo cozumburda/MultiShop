@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Multishop.Basket.Dtos;
 using Multishop.Basket.LoginServices;
 using Multishop.Basket.Services;

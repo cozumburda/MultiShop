@@ -1,0 +1,34 @@
+﻿@model UpdateProductImageDto
+
+@{
+    ViewData["Title"] = "UpdateProductImage";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Görseli Güncellenen Ürün : @ViewBag.pName</h4>
+                <br />
+                <form method="post" action="/Admin/ProductAdminImage/UpdateProductImage/">
+                    <input type="hidden" asp-for="ProductImageID">
+                    <input type="hidden" asp-for="ProductID">
+                    <br />
+                    <div class="form-group">                        
+                        <label for="basicInput">Görsel Seçin veya Görsel Yolu Girin</label>
+                        <input type="file" class="form-control" id="basicInput" name="image3">
+                        <input type="text" asp-for="ProductImage1" class="form-control" id="basicInput" placeholder="Ürün Görsel Yolu">
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label for="basicInput">Mevcut Görsel</label>                        
+                        <img src="@Model.ProductImage1" class="rounded-2" style="height:250px">
+                        <br />
+                    </div>
+                    <button type="submit" class="btn btn-success">Görseli Güncelle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

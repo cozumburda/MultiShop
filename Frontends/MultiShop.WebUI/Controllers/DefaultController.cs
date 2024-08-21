@@ -6,6 +6,8 @@ namespace MultiShop.WebUI.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.Dr1 = "Anasayfa";
+            ViewBag.Dr2 = "/Default/Index/";
             return View();
         }
     }

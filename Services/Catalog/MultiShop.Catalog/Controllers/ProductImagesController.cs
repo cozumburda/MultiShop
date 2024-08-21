@@ -5,7 +5,7 @@ using MultiShop.Catalog.Services.ProductImageServices;
 
 namespace MultiShop.Catalog.Controllers
 {
-    
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductImagesController : ControllerBase
@@ -22,6 +22,12 @@ namespace MultiShop.Catalog.Controllers
             var values = await _productImageService.GetAllProductImageAsync();
             return Ok(values);
         }
+        [HttpGet("ProductImageListByProductId/{id}")]
+        public async Task<IActionResult> ProductImageListByProductId(string id)
+        {
+            var values = await _productImageService.GetByProductIdProductImageAsync(id);
+            return Ok(values);
+        }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductImageById(string id)
         {
@@ -34,7 +40,7 @@ namespace MultiShop.Catalog.Controllers
             await _productImageService.CreateProductImageAsync(createProductImageDto);
             return Ok("Ürün Resmi Başarıyla Eklendi");
         }
-        [HttpDelete]
+        [HttpDelete("DeleteProductImage/{id}")]
         public async Task<IActionResult> DeleteProductImage(string id)
         {
             await _productImageService.DeleteProductImageAsync(id);

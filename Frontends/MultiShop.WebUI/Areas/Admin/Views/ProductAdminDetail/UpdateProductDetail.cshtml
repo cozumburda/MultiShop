@@ -1,0 +1,47 @@
+﻿@model UpdateProductDetailDto
+
+@{
+    ViewData["Title"] = "UpdateProductDetail";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h3 class="text-center text-danger">@TempData["detailError"]</h3>
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Ürün Açıklama ve Bilgi Güncelleme Sayfası</h4>
+                <br />
+                <form method="post" action="/Admin/ProductAdminDetail/UpdateProductDetail/">
+                    <div class="form-group">
+                        <input type="hidden" asp-for="ProductDetailID">
+                        <input type="hidden" asp-for="ProductID">
+                        <label>Ürün Açıklaması</label>
+                        @if (Model != null)
+                        {
+                            <textarea asp-for="ProductDescription" rows="5" class="form-control" placeholder="Ürün Açıklaması"></textarea>
+                        }
+                        else
+                        {
+                            <textarea asp-for="ProductDescription" rows="5" class="form-control" placeholder="Ürün Açıklaması" disabled></textarea>
+                        }
+                        <br />
+                        <label>Ürün Bilgisi</label>
+                        @if (Model != null)
+                        {
+                            <textarea asp-for="ProductInfo" rows="5" class="form-control" placeholder="Ürün Bilgisi"></textarea>
+                        }
+                        else
+                        {
+                            <textarea asp-for="ProductInfo" rows="5" class="form-control" placeholder="Ürün Bilgisi" disabled></textarea>
+                        }
+                        <br />
+                    </div>
+                    <button type="submit" name="pid" value="@ViewBag.pErrorId" class="btn btn-success">Güncelle</button>
+                    <a href="/Admin/ProductAdminDetail/CreateProductDetail/@ViewBag.pUId" class="btn btn-primary @(Model != null ? "disabled" : "")">Yeni Detay Bilgi Ekleme Sayfası</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

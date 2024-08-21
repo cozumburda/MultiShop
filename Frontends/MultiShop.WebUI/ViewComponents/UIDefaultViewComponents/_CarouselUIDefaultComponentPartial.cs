@@ -1,12 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MultiShop.WebUI.Services.CatalogServices.FeatureSliderServices;
 
 namespace MultiShop.WebUI.ViewComponents.UIDefaultViewComponents
 {
-    public class _CarouselUIDefaultComponentPartial:ViewComponent
+    public class _CarouselUIDefaultComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly IFeatureSliderService _featureSliderService;
+        public _CarouselUIDefaultComponentPartial(IFeatureSliderService featureSliderService)
         {
-            return View();
+            _featureSliderService = featureSliderService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var values = await _featureSliderService.GetAllFeatureSliderAsync();
+            return View(values);
         }
     }
 }
