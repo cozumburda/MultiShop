@@ -12,7 +12,6 @@ namespace MultiShop.Discount.Services
         {
             _context = context;
         }
-
         public async Task CreateDiscountCouponAsync(CreateDiscountCouponDto createCouponDto)
         {
             string query = "insert into Coupons (Code,Rate,IsActive,ValidDate) values (@code,@rate,@isActive,@validDate)";
@@ -25,9 +24,7 @@ namespace MultiShop.Discount.Services
             {
                 await connection.ExecuteAsync(query, parameters);
             };
-
         }
-
         public async Task DeleteDiscountCouponAsync(int id)
         {
             string query = "Delete From Coupons Where CouponId=@couponId";
@@ -39,6 +36,16 @@ namespace MultiShop.Discount.Services
             };
         }
 
+        public async Task<int> GetActiveDiscountCouponsCount()
+        {
+            string query = "Select Count(*) From Coupons Where IsActive=1";
+            using (var connection = _context.CreateConnection())
+            {
+                int values = await connection.QueryFirstOrDefaultAsync<int>(query, null);
+                return values;
+            }
+        }
+
         public async Task<List<ResultDiscountCouponDto>> GetAllDiscountCouponsAsync()
         {
             string query = "Select * From Coupons";
@@ -48,7 +55,6 @@ namespace MultiShop.Discount.Services
                 return values.ToList();
             }
         }
-
         public async Task<GetByIdDiscountCouponDto> GetByCouponCodeAndIsValidDiscountCouponAsync(string code)
         {
             string query = "Select * From Coupons Where Code=@code And IsActive = 1";
@@ -60,7 +66,6 @@ namespace MultiShop.Discount.Services
                 return values;
             }
         }
-
         public async Task<GetByIdDiscountCouponDto> GetByIdDiscountCouponAsync(int id)
         {
             string query = "Select * From Coupons Where CouponId=@couponId";
@@ -69,6 +74,25 @@ namespace MultiShop.Discount.Services
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryFirstOrDefaultAsync<GetByIdDiscountCouponDto>(query, parameters);
+                return values;
+            }
+        }
+        public async Task<int> GetDiscountCouponsCount()
+        {
+            string query = "Select Count(*) From Coupons";           
+            using (var connection = _context.CreateConnection())
+            {
+                int values = await connection.QueryFirstOrDefaultAsync<int>(query, null);
+                return values;
+            }
+        }
+
+        public async Task<int> GetPassiveDiscountCouponsCount()
+        {
+            string query = "Select Count(*) From Coupons Where IsActive=0";
+            using (var connection = _context.CreateConnection())
+            {
+                int values = await connection.QueryFirstOrDefaultAsync<int>(query, null);
                 return values;
             }
         }

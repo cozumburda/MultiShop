@@ -1,0 +1,22 @@
+﻿@model ExchangeRateViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Exchange</title>
+</head>
+<body>
+    <div class="container">
+        <br />
+        <br />
+        <h3>Dolar : @Model.Usd.ToString("C")</h3><br />
+        <h3>Euro : @Model.Eur.ToString("C")</h3>
+    </div>
+</body>
+</html>

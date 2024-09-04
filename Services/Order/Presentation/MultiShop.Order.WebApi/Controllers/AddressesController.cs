@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Order.Application.Features.CQRS.Commands.AddressCommands;
 using MultiShop.Order.Application.Features.CQRS.Handlers.AddressHandlers;
@@ -50,11 +49,18 @@ namespace MultiShop.Order.WebApi.Controllers
             await _updateAddressCommandHandler.Handle(command);
             return Ok("Adres Başarıyla Güncellendi");
         }
-        [HttpDelete]
+        [HttpDelete("RemoveAddress/{id}")]
         public async Task<IActionResult> RemoveAddress(int id)
         {
             await _removeAddressCommandHandler.Handle(new RemoveAddressCommand(id));
             return Ok("Adres Silindi");
+        }
+        [HttpGet("GetAddressListByUserId/{id}")]
+        public async Task<IActionResult> GetAddressListByUserId(string id)
+        {
+            var values = await _getAddressQueryHandler.Handle();
+            var userAddresses = values.Where(x => x.UserId == id).ToList();
+            return Ok(userAddresses);
         }
     }
 }

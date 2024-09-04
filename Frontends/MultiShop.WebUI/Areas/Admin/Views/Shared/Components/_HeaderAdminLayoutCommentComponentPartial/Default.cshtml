@@ -1,0 +1,24 @@
+﻿@model List<ResultUnApprovedComments>
+
+@{
+    int daytime;
+    int hourtime;
+    string minutetime = "";
+    string commentDetail = "";
+}
+
+@foreach (var item in Model)
+{
+    daytime = (DateTime.Now - item.CreatedDate).Days;
+    hourtime = (DateTime.Now - item.CreatedDate).Hours;
+    minutetime = (DateTime.Now - item.CreatedDate).Minutes.ToString();
+    commentDetail = item.CommentDetail.Length <= 30 ? item.CommentDetail : item.CommentDetail.Substring(0, 30);
+    <li>
+        <a href="/Admin/CommentAdmin/UpdateComment/@item.UserCommentId">
+            <div class="pull-left"><img src="@item.ImageUrl" class="img-circle" alt="User Image"></div>
+            <h4>@item.NameSurname</h4>
+            <p>@commentDetail</p>
+            <p><small><i class="fa fa-clock-o"></i> @(daytime > 0 ? daytime + " " + "gün," : "") @(hourtime > 0 ? hourtime + " " + "saat," : "") @minutetime dakika önce</small></p>
+        </a>
+    </li>
+}

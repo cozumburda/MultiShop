@@ -1,0 +1,38 @@
+﻿@model List<UpdateOrderAddressDto>
+@{
+    string addressStatusD = "";
+    string addressStatusI = "";
+}
+<h5 class="section-title position-relative text-uppercase text-success mb-3"><span class="bg-secondary pr-3">@Model.Count Adet Adresiniz Mevcut</span></h5>
+
+<div class="col-md-12">
+    <div class="bg-secondary">
+        <button class="btn btn-success mb-3" data-toggle="modal" data-target="#shipping-address">Yeni Adres Ekle</button>
+    </div>
+</div>
+@if (Model.Count > 0)
+{    
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            addressStatusD = item.Isdefault == true ? "Teslimat Adresi" : "";
+            addressStatusI = item.IsInvoice == true ? "Fatura Adresi" : "";
+            <div class="mb-3 col-lg-4">
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-2">@item.Description</span></h5>
+                <div class="bg-light p-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p>@item.Detail1 @item.District @item.City @item.Country</p>
+                        <a href="/Order/Index/@item.AddressId" class="btn btn-outline-info btn-sm rounded">Seç</a>
+                    </div>
+                    <p><small class="text-success"><b>@addressStatusD</b></small> <small class="text-info"><b>@addressStatusI</b></small></p>
+                    <a href="/Order/DeleteAddress/@item.AddressId" class="btn btn-outline-danger btn-sm rounded">Sil</a>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <h5 class="section-title position-relative text-uppercase text-danger mb-3"><span class="bg-secondary pr-3">Kayıtlı Adresiniz Yok Lütfen Adres Ekleyin</span></h5>
+}
+@await Component.InvokeAsync("_OrderCreateNewAddressComponentPartial")

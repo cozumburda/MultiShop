@@ -13,7 +13,7 @@ namespace MultiShop.WebUI.ViewComponents.ShoppingCardViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var values = await _basketService.GetBasket();
+            var values = await _basketService.GetBasket(null);
             return View(values);
         }
     }

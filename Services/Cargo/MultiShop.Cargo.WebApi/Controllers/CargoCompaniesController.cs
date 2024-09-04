@@ -33,13 +33,13 @@ namespace MultiShop.Cargo.WebApi.Controllers
             _cargoCompanyService.TInsert(cargoCompany);
             return Ok("Kargo Şirketi Başarıyla Oluşturuldu");
         }
-        [HttpDelete]
+        [HttpDelete("RemoveCargoCompany/{id}")]
         public IActionResult RemoveCargoCompany(int id)
         {
             _cargoCompanyService.TDelete(id);
             return Ok("Kargo Şirketi Başarıyla Silindi");
         }
-        [HttpGet("{id}")]
+        [HttpGet("GetCargoCompanyById/{id}")]
         public IActionResult GetCargoCompanyById(int id)
         {
             var value = _cargoCompanyService.TGetById(id);

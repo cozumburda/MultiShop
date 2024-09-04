@@ -28,69 +28,36 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <li class="dropdown messages-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-envelope"></i>
-                        <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="uacomment">
+                        <i class="icon-chat"> <strong id="commentcount"></strong></i>
+                        <div class="notify" style="margin-left:30px"> <span class="heartbit"></span> <span class="point"></span> </div>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">4 Mesajınız Var</li>
+                        <li class="header"> <strong id="commentcount2"></strong> adet onaysız yorum var</li>
                         <li>
-                            <ul class="menu">
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left"><img src="~/images/logos/manlogo.jpg" class="img-circle" alt="User Image"></div>
-                                        <h4>Florence Douglas</h4>
-                                        <p>Lorem ipsum dolor sit amet.</p>
-                                        <p><small><i class="fa fa-clock-o"></i> 2 mins</small></p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left"><img src="~/images/logos/manlogo.jpg" class="img-circle" alt="User Image"></div>
-                                        <h4>Douglas Smith</h4>
-                                        <p>Lorem ipsum dolor sit amet.</p>
-                                        <p><small><i class="fa fa-clock-o"></i> 15 mins</small></p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left"><img src="~/images/logos/manlogo.jpg" class="img-circle" alt="User Image"></div>
-                                        <h4>Lorence Deo</h4>
-                                        <p>Lorem ipsum dolor sit amet.</p>
-                                        <p><small><i class="fa fa-clock-o"></i> 35 mins</small></p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left"><img src="~/images/logos/manlogo.jpg" class="img-circle" alt="User Image"></div>
-                                        <h4>Florence Douglas</h4>
-                                        <p>Lorem ipsum dolor sit amet.</p>
-                                        <p><small><i class="fa fa-clock-o"></i> 2 mins</small></p>
-                                    </a>
-                                </li>
+                            <ul class="menu" id="getuacomment">
+                                @await Component.InvokeAsync("_HeaderAdminLayoutCommentComponentPartial")
+                                
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">Tüm Bildirimler</a></li>
+                        <li class="footer"><a href="#">Tüm Yorumlar</a></li>
                     </ul>
                 </li>
                 <!-- messages-menu -->
                 <!-- Notifications Menu -->
-                <li class="dropdown notifications-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-megaphone"></i>
-                        <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                <li class="dropdown messages-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="urmessage">
+                        <i class="icon-envelope"> <strong id="messagecount"></strong></i>
+                        <div class="notify" style="margin-left:30px"> <span class="heartbit"></span> <span class="point"></span> </div>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">Bildirimler</li>
+                        <li class="header"> <strong id="messagecount2"></strong> adet okunmamış mesajınız var</li>
                         <li>
-                            <ul class="menu">
-                                <li><a href="#"><i class="icon-lightbulb"></i> Lorem ipsum dolor sit amet </a> </li>
-                                <li><a href="#"><i class="icon-map-pin blue"></i> Lorem ipsum dolor sit amet </a> </li>
-                                <li><a href="#"><i class="icon-refresh orange"></i> Lorem ipsum dolor sit amet </a> </li>
-                                <li><a href="#"><i class="icon-map-pin blue"></i> Lorem ipsum dolor sit amet </a> </li>
+                            <ul class="menu" id="geturmessage">
+                                @await Component.InvokeAsync("_HeaderAdminLayoutMessageComponentPartial")
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">Tümünü Gör</a></li>
+                        <li class="footer"><a href="#">Tüm Mesajlar</a></li>
                     </ul>
                 </li>
                 <!-- Tasks Menu -->
@@ -116,3 +83,6 @@
         </div>
     </nav>
 </header>
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+<script src="~/js/refreshunreadedmessages.js"></script>
+<script src="~/js/refreshunapprovedcomments.js"></script>

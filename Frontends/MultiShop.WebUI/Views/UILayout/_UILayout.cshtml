@@ -1,4 +1,5 @@
-﻿@{
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@{
     Layout = null;
 }
 
@@ -8,9 +9,9 @@
 @await Component.InvokeAsync("_HeadUILayoutComponentPartial")
 
 <body>
-    @await Component.InvokeAsync("_TopbarUILayoutComponentPartial")
-       
-    @await Component.InvokeAsync("_NavbarUILayoutComponentPartial")
+   
+    @await Html.PartialAsync("/Views/UILayout/TopbarPartial.cshtml")
+    @await Html.PartialAsync("/Views/UILayout/NavbarPartial.cshtml")
 
     @await Component.InvokeAsync("_DirectoryAlertComponentPartial")
     

@@ -1,0 +1,99 @@
+﻿@model UpdateOrderAddressDto
+
+@* <section class="content container-fluid">
+    <div class="row"> *@
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Sipariş Sevk Adresi</h4>
+        <form method="post" action="/Admin/AppUserAdmin/UpdateUserCargoAddress/">
+            <input asp-for="AddressId" type="hidden">
+            <input asp-for="UserId" type="hidden">
+            <input asp-for="Name" type="hidden">
+            <input asp-for="Surname" type="hidden">
+            <input asp-for="Email" type="hidden">
+            <input asp-for="Phone" type="hidden">
+            <input asp-for="City" type="hidden">
+            <input asp-for="District" type="hidden">
+            <input asp-for="Detail1" type="hidden">
+            <input asp-for="Detail2" type="hidden">
+            <input asp-for="Country" type="hidden">
+            <input asp-for="ZipCode" type="hidden">
+            <input asp-for="Description" type="hidden">
+            <div class="row">
+                <div class="col-md-6">
+                    <fieldset class="form-group">
+                        <label>İsim</label>
+                        <input class="form-control" asp-for="Name" disabled type="text">
+                    </fieldset>
+                </div>
+                <div class="col-md-6">
+                    <fieldset class="form-group">
+                        <label>Soyisim</label>
+                        <input class="form-control" asp-for="Surname" disabled type="text">
+                    </fieldset>
+                </div>
+                <div class="col-md-6">
+                    <fieldset class="form-group">
+                        <label>E-Mail</label>
+                        <input class="form-control" asp-for="Email" disabled type="email">
+                    </fieldset>
+                </div>
+                <div class="col-md-6">
+                    <fieldset class="form-group">
+                        <label>Telefon</label>
+                        <input class="form-control" asp-for="Phone" disabled type="text">
+                    </fieldset>
+                </div>
+                <div class="col-md-6">
+                    <fieldset class="form-group">
+                        <label>İl</label>
+                        <input class="form-control" asp-for="City" disabled type="text">
+                    </fieldset>
+                </div>
+                <div class="col-md-6">
+                    <fieldset class="form-group">
+                        <label>İlçe</label>
+                        <input class="form-control" asp-for="District" disabled type="text">
+                    </fieldset>
+                </div>
+                <div class="col-md-12">
+                    <fieldset class="form-group">
+                        <label>Adres 1</label>
+                        <input class="form-control" asp-for="Detail1" disabled type="text">
+                    </fieldset>
+                </div>
+                <div class="col-md-12">
+                    <fieldset class="form-group">
+                        <label>Adres 2</label>
+                        <input class="form-control" asp-for="Detail2" disabled type="text">
+                    </fieldset>
+                </div>
+                <div class="col-md-6">
+                    <fieldset class="form-group">
+                        <label>Ülke</label>
+                        <input class="form-control" asp-for="Country" disabled type="text">
+                    </fieldset>
+                </div>
+                <div class="col-md-6">
+                    <fieldset class="form-group">
+                        <label>Posta kodu</label>
+                        <input class="form-control" asp-for="ZipCode" disabled type="text">
+                    </fieldset>
+                </div>
+                <div class="col-md-12">
+                    <fieldset class="form-group">
+                        <label>Açıklama</label>
+                        <input class="form-control" asp-for="Description" disabled type="text">
+                    </fieldset>
+                </div>
+                <div class="col-md-12">
+                    <fieldset class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Kargo Adresi Yap</button>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@* </div>
+</section> *@

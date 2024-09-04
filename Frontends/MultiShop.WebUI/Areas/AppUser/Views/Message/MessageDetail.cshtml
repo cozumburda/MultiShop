@@ -1,0 +1,28 @@
+﻿@model UpdateMessageDto
+@{
+    ViewData["Title"] = "MessageDetail";
+    Layout = "~/Areas/AppUser/Views/AppUserLayout/Index.cshtml";
+    string lnk = "";
+    if (Model.ReceiverId == ViewBag.appUser) { lnk = "/AppUser/Message/Index/"; }
+    else { lnk = "/AppUser/Message/Sendbox/"; }
+}
+
+<div class="col-12 grid-margin stretch-card p-2">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title mb-2">Mesaj Detayı</h4>
+            <form class="forms-sample">
+                <div class="form-group">
+                    <label for="exampleInputName1">Konu</label>
+                    <input type="text" class="form-control" asp-for="Subject" id="exampleInputName1" placeholder="Konu" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea1">Mesajınız</label>
+                    <textarea class="form-control" id="exampleTextarea1" asp-for="MessageDetail" rows="5" disabled></textarea>
+                </div>
+                <a href="@lnk" class="btn btn-light">Geri Dön</a>
+            </form>
+        </div>
+    </div>
+</div>
+

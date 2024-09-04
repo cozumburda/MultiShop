@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
+using MultiShop.WebUI.Models.RapidApiViewModels.ECommerceViewModels;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
+using Newtonsoft.Json;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
@@ -83,7 +85,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             await _productService.UpdateProductAsync(updateProductDto);
 
-            return RedirectToAction("ProductListWithCategory", "ProductAdmin", new { area = "Admin" });            
+            return RedirectToAction("ProductListWithCategory", "ProductAdmin", new { area = "Admin" });
         }
         [Route("DeleteProduct/{id}")]
         public async Task<IActionResult> DeleteProduct(string id)
@@ -104,6 +106,55 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             return View(values);
         }
 
+        [Route("ECommerceProductSearch")]
+        public async Task<IActionResult> ECommerceProductSearch(string? prName)
+        {
+            ViewBag.v1 = "Anasayfa";
+            ViewBag.v2 = "Ürünler";
+            ViewBag.v3 = "Ürün Arama";
+            ViewBag.t = "Ürün Arama";
+            if (prName == null)
+            {
+                prName = "Kol Saati";
+            };
+            ViewBag.prName = prName;
+            var client = new HttpClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("https://real-time-amazon-data.p.rapidapi.com/search?query=" + prName.ToString() + "&page=1&country=TR&sort_by=RELEVANCE&product_condition=ALL&is_prime=false"),
+                Headers =
+                {
+                    { "x-rapidapi-key", "abedb3b754msh1231493457e791dp16ec12jsndbe4630f6b52" },
+                    { "x-rapidapi-host", "real-time-amazon-data.p.rapidapi.com" },
+                },
+            };
+
+            using (var response = await client.SendAsync(request))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+
+
+                    response.EnsureSuccessStatusCode();
+                    var body = await response.Content.ReadAsStringAsync();
+                    var model = JsonConvert.DeserializeObject<ECommerceViewModel.Rootobject>(body);
+                    var v = model.data.products.ToList();
+
+                    return View(v);
+                }
+                else
+                {
+                    List<ECommerceViewModel.Product>? em = new List<ECommerceViewModel.Product>();
+                    ECommerceViewModel.Product m = new ECommerceViewModel.Product();
+                    m.product_title = "Limit Doldu";
+
+                    em.Add(m);
+
+                    return View(em);
+                }
+            }
+        }
         //void ProductViewBagList()
         //{
         //    ViewBag.v1 = "Anasayfa";

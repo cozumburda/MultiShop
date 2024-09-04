@@ -1,0 +1,32 @@
+﻿@model UpdateMessageDto
+
+@{
+    ViewData["Title"] = "UpdateMessage";
+    Layout = "~/Areas/AppUser/Views/AppUserLayout/Index.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card p-2">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title mb-2">Mesaj Yanıt Formu</h4>
+            <form class="forms-sample" method="post" action="/AppUser/Message/UpdateMessage/">
+                <input type="hidden" asp-for="ReceiverId">
+                <input type="hidden" asp-for="SenderId">
+                <input type="hidden" asp-for="IsRead">
+                <input type="hidden" asp-for="MessageDate">
+                <input type="hidden" asp-for="UserMessageId">
+                <div class="form-group">
+                    <label for="exampleInputName1">Konu</label>
+                    <input type="text" class="form-control" asp-for="Subject" id="exampleInputName1" placeholder="Konu" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea1">Mesajınız</label>
+                    <textarea class="form-control" id="exampleTextarea1" asp-for="MessageDetail" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Gönder</button>
+                <a href="/AppUser/Message/Index/" class="btn btn-light">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+

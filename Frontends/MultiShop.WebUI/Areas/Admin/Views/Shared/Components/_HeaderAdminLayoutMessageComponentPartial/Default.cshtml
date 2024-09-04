@@ -1,0 +1,20 @@
+﻿@model List<ResultUnreadedInboxMessageDto>
+@{
+    int daytime;
+    int hourtime;
+    string minutetime = "";
+}
+@foreach (var item in Model)
+{
+    daytime = (DateTime.Now - item.MessageDate).Days;
+    hourtime = (DateTime.Now - item.MessageDate).Hours;
+    minutetime = (DateTime.Now - item.MessageDate).Minutes.ToString();
+    <li>
+        <a href="/AppUser/Message/MessageDetail/@item.UserMessageId">
+            <div class="pull-left"><i class="icon-lightbulb blue"></i></div>
+            <h4>@item.SenderName</h4>
+            <p>@item.Subject</p>
+            <p><small><i class="fa fa-clock-o"></i> @(daytime > 0 ? daytime + " " + "gün," : "") @(hourtime > 0 ? hourtime + " " + "saat," : "") @minutetime dakika önce</small></p>
+        </a>
+    </li>
+}

@@ -1,5 +1,4 @@
-﻿using MultiShop.DtoLayer.CommentDtos;
-using MultiShop.DtoLayer.DiscountDtos;
+﻿using MultiShop.DtoLayer.DiscountDtos;
 using Newtonsoft.Json;
 
 namespace MultiShop.WebUI.Services.DiscountServices
@@ -12,19 +11,23 @@ namespace MultiShop.WebUI.Services.DiscountServices
         {
             _httpClient = httpClient;
         }
-        public Task CreateDiscountCouponAsync(CreateDiscountCouponDto createCouponDto)
+        public async Task CreateDiscountCouponAsync(CreateDiscountCouponDto createCouponDto)
         {
-            throw new NotImplementedException();
+            await _httpClient.PostAsJsonAsync<CreateDiscountCouponDto>("Discount", createCouponDto);
         }
 
-        public Task DeleteDiscountCouponAsync(int id)
+        public async Task DeleteDiscountCouponAsync(int id)
         {
-            throw new NotImplementedException();
+            await _httpClient.DeleteAsync("Discount/DeleteDiscountCoupon/" + id);
         }
 
-        public Task<List<ResultDiscountCouponDto>> GetAllDiscountCouponsAsync()
+        public async Task<List<ResultDiscountCouponDto>> GetAllDiscountCouponsAsync()
         {
-            throw new NotImplementedException();
+            var responseMessage = await _httpClient.GetAsync("Discount");
+            var jsondata = await responseMessage.Content.ReadAsStringAsync();
+            var value = JsonConvert.DeserializeObject<List<ResultDiscountCouponDto>>(jsondata);
+            //var value = await responseMessage.Content.ReadFromJsonAsync<List<ResultDiscountCouponDto>>();
+            return value;
         }
 
         public async Task<GetByIdDiscountCouponDto> GetByCodeDiscountCouponAsync(string code)
@@ -38,7 +41,7 @@ namespace MultiShop.WebUI.Services.DiscountServices
 
         public async Task<GetByIdDiscountCouponDto> GetByIdDiscountCouponAsync(int id)
         {
-            var responseMessage = await _httpClient.GetAsync("Discount/" + id);
+            var responseMessage = await _httpClient.GetAsync("Discount/GetDiscountCouponById/" + id);
             var jsondata = await responseMessage.Content.ReadAsStringAsync();
             var value = JsonConvert.DeserializeObject<GetByIdDiscountCouponDto>(jsondata);
             //var value = await responseMessage.Content.ReadFromJsonAsync<GetByIdCategoryDto>();

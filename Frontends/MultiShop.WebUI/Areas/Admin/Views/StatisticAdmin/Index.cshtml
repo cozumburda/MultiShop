@@ -1,0 +1,159 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box">
+                <div class="media-icon pull-left"><i class="icon-briefcase"></i> </div>
+                <div class="media-info">
+                    <h5>Marka Sayısı</h5>
+                    <h3>@ViewBag.brandCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box">
+                <div class="media-icon pull-left"><i class="icon-layers"></i> </div>
+                <div class="media-info">
+                    <h5>Kategori Sayısı</h5>
+                    <h3>@ViewBag.categoryCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box">
+                <div class="media-icon pull-left"><i class="icon-piechart"></i> </div>
+                <div class="media-info">
+                    <h5>Ürün Sayısı</h5>
+                    <h3>@ViewBag.productCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box">
+                <div class="media-icon pull-left"><i class="icon-paperclip"></i> </div>
+                <div class="media-info">
+                    <h5>En Pahalı Ürün</h5>
+                    <h3>@ViewBag.maxProductPrice</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-sea">
+                <div class="media-icon pull-left"><i class="icon-ribbon"></i> </div>
+                <div class="media-info">
+                    <h5>En Ucuz Ürün</h5>
+                    <h3>@ViewBag.minProductPrice</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-sea">
+                <div class="media-icon pull-left"><i class="icon-wallet"></i> </div>
+                <div class="media-info">
+                    <h5>Ortalama Ürün Fiyatı</h5>
+                    <h3>@ViewBag.avgProductPrice</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-sea">
+                <div class="media-icon pull-left"><i class="icon-profile-female"></i> </div>
+                <div class="media-info">
+                    <h5>Toplam Kullanıcı</h5>
+                    <h3>@ViewBag.appUserCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-sea">
+                <div class="media-icon pull-left"><i class="icon-chat"></i> </div>
+                <div class="media-info">
+                    <h5>Toplam Yorum</h5>
+                    <h3>@ViewBag.CommentCount</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-blue">
+                <div class="media-icon pull-left"><i class="icon-attachment"></i> </div>
+                <div class="media-info">
+                    <h5>Onaylı Yorum</h5>
+                    <h3>@ViewBag.activeCommentCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-blue">
+                <div class="media-icon pull-left"><i class="icon-lightbulb"></i> </div>
+                <div class="media-info">
+                    <h5>Onaysız Yorum</h5>
+                    <h3>@ViewBag.passiveCommentCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-blue">
+                <div class="media-icon pull-left"><i class="icon-newspaper"></i> </div>
+                <div class="media-info">
+                    <h5>Toplam Kupon</h5>
+                    <h3>@ViewBag.discountCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-blue">
+                <div class="media-icon pull-left"><i class="icon-book-open"></i> </div>
+                <div class="media-info">
+                    <h5>Aktif Kupon</h5>
+                    <h3>@ViewBag.activeDiscountCount</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-green">
+                <div class="media-icon pull-left"><i class="icon-scissors"></i> </div>
+                <div class="media-info">
+                    <h5>Pasif Kupon</h5>
+                    <h3>@ViewBag.passiveDiscountCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-green">
+                <div class="media-icon pull-left"><i class="icon-envelope"></i> </div>
+                <div class="media-info">
+                    <h5>Toplam Mesaj</h5>
+                    <h3>@ViewBag.totalMessageCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-green">
+                <div class="media-icon pull-left"><i class="icon-adjustments"></i> </div>
+                <div class="media-info">
+                    <h5>Okunmamış Mesaj</h5>
+                    <h3>@ViewBag.nonReadedMessageCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-green">
+                <div class="media-icon pull-left"><i class="icon-documents"></i> </div>
+                <div class="media-info">
+                    <h5>Okunmuş Mesaj</h5>
+                    <h3>@ViewBag.readedMessageCount</h3>
+                </div>
+            </div>
+        </div>
+    </div>    
+</section>

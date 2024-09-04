@@ -1,0 +1,58 @@
+﻿@model List<ECommerceViewModel.Product>
+@{
+    ViewData["Title"] = "ECommerceProductSearch";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";    
+}
+
+<section class="content container-fluid">
+    <div class="col-md-12">
+        <div class="chart-box">
+
+            <form method="get" action="/Admin/ProductAdmin/ECommerceProductSearch/">
+                <label class="form-label">Aranacak Ürün</label>
+                <input type="text" name="prName" class="form-control" value="@ViewBag.prName" /><br />
+                <button class="btn btn-info btn-sm" type="submit">Ara</button>
+            </form>
+
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="chart-box">
+
+            @* <h4>Ürün Listesi</h4>
+            <p>Ürün ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz</p> *@
+            <br />
+            <div class="bs-example" data-example-id="bordered-table">
+                @* <div class="table-responsive text-nowrap m-3"> *@
+                <table class="table table-bordered p-2 mb-2" id="ecproductsTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Görsel</th>
+                            <th>Ürün Başlığı</th>
+                            <th>Ürün Puanı</th>
+                            <th>Ürün Fiyatı</th>
+                            <th>Ürün Detayları</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var list in Model)
+                        {
+                            
+                            <tr class="text-center">
+                                <td><img src="@list.product_photo" style="height:60px" class="rounded-2" /></td>
+                                <td>@list.product_title</td>
+                                <td><span>@list.product_star_rating puan</span> <br /> <span>@list.product_num_ratings adet değerlendirme</span></td>
+                                <td><span>@list.product_price</span> <br /> <span>@list.product_minimum_offer_price</span></td>
+                                <td><a href="@list.product_url" class="btn btn-success btn-sm">Ürün Detayları</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                @* </div> *@
+            </div>
+
+        </div>
+    </div>
+</section>
+<script src="~/js/ecommerceindex.js"></script>

@@ -1,0 +1,32 @@
+﻿@model MultiShop.Images.WebUI.DAL.Entities.ImageDrive
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Google Drive Storage Resim Yükleme Sayfası</title>
+</head>
+<body>
+    <div class="container p-5">
+    <h2 class="alert alert-primary">Google Drive Storage Resim Yükleme Sayfası</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        <label>Görsel Adı</label>
+        <input type="text" class="form-control border" name="Name" />        
+        <br />
+        <label>Görsel Seçiniz</label>
+        <input type="file" class="form-control border" name="Photo" />
+        <br />        
+        <button class="btn btn-outline-info">Görseli Kaydet</button>
+        <a href="/Default/Index/" class="btn btn-outline-danger">Geri Dön</a>
+    </form>
+    </div>
+</body>
+</html>

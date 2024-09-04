@@ -34,18 +34,19 @@ namespace MultiShop.Cargo.WebApi.Controllers
                 Phone = createCargoCustomerDto.Phone,
                 City = createCargoCustomerDto.City,
                 District = createCargoCustomerDto.District,
-                Address = createCargoCustomerDto.Address
+                Address = createCargoCustomerDto.Address,
+                UserCustomerId=createCargoCustomerDto.UserCustomerId
             };
             _cargoCustomerService.TInsert(cargoCustomer);
             return Ok("Kargo Müşterisi Başarıyla Oluşturuldu");
         }
-        [HttpDelete]
+        [HttpDelete("RemoveCargoCustomer/{id}")]
         public IActionResult RemoveCargoCustomer(int id)
         {
             _cargoCustomerService.TDelete(id);
             return Ok("Kargo Müşterisi Başarıyla Silindi");
         }
-        [HttpGet("{id}")]
+        [HttpGet("GetCargoCustomerById/{id}")]
         public IActionResult GetCargoCustomerById(int id)
         {
             var value = _cargoCustomerService.TGetById(id);
@@ -63,10 +64,17 @@ namespace MultiShop.Cargo.WebApi.Controllers
                 Phone = updateCargoCustomerDto.Phone,
                 City = updateCargoCustomerDto.City,
                 District = updateCargoCustomerDto.District,
-                Address = updateCargoCustomerDto.Address
+                Address = updateCargoCustomerDto.Address,
+                UserCustomerId=updateCargoCustomerDto.UserCustomerId
             };
             _cargoCustomerService.TUpdate(cargoCustomer);
             return Ok("Kargo Müşterisi Başarıyla Güncellendi");
+        }
+        [HttpGet("GetCargoCustomerByUserId/{id}")]
+        public IActionResult GetCargoCustomerByUserId(string id)
+        {
+            var values = _cargoCustomerService.TGetCargoCustomerById(id);
+            return Ok(values);
         }
     }
 }

@@ -12,13 +12,13 @@
         <!-- Main Header -->
         @await Component.InvokeAsync("_HeaderAdminLayoutComponentPartial")
         <!-- Left side column. contains the logo and sidebar -->
-        @await Component.InvokeAsync("_SidebarAdminLayoutComponentPartial")        
+        @await Component.InvokeAsync("_SidebarAdminLayoutComponentPartial")
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            @await Component.InvokeAsync("_MainSectionViewbagAdminLayoutComponentPartial")            
-            <!-- Main content -->            
-                @RenderBody()            
+            @await Component.InvokeAsync("_MainSectionViewbagAdminLayoutComponentPartial")
+            <!-- Main content -->
+            @RenderBody()
             <!-- content -->
         </div>
         <!-- content-wrapper -->
@@ -30,8 +30,38 @@
     </div>
     <!-- wrapper -->
     <!-- jQuery -->
-    <script src="~/MainDownload-OvioAdmin-html5-template/html/dist/js/jquery.min.js"></script>
+    @* <script src="~/MainDownload-OvioAdmin-html5-template/html/dist/js/jquery.min.js"></script> *@
     <script src="~/MainDownload-OvioAdmin-html5-template/html/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/MainDownload-OvioAdmin-html5-template/html/dist/js/ovio.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.3/js/dataTables.buttons.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(() => {
+            var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7244/SignalRHub").build();
+            $("#connstatus").text(connection.state);
+
+            connection.start().then(() => {
+                $("#connstatus").text(connection.state);
+                setInterval(() => {
+                    connection.invoke("SendStatisticCount");
+                }, 1000);                
+            }).catch((err) => { console.log(err) });
+
+            connection.on("ReceiveCommentCount", (value) => {
+                $("#commentcount").text(value);
+            });
+            connection.on("ReceiveCommentCount", (value) => {
+                $("#commentcount2").text(value);
+            });
+            connection.on("ReceiveMessageCount", (value) => {
+                $("#messagecount").text(value);
+            });
+            connection.on("ReceiveMessageCount", (value) => {
+                $("#messagecount2").text(value);
+            });
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

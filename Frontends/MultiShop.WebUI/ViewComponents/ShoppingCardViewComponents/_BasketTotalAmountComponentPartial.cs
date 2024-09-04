@@ -20,7 +20,7 @@ namespace MultiShop.WebUI.ViewComponents.ShoppingCardViewComponents
                 rate = int.Parse(ViewData["codeRate"].ToString());
                 codeName = ViewData["codeName"].ToString();
             }
-            var totalValue = await _basketService.GetBasket();
+            var totalValue = await _basketService.GetBasket(null);
             totalValue.DiscountRate = rate;
             totalValue.DiscountCode = codeName;
             return View(totalValue);

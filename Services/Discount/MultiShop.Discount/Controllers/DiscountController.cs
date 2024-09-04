@@ -23,7 +23,7 @@ namespace MultiShop.Discount.Controllers
             return Ok(values);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetDiscountCouponById/{id}")]
         public async Task<IActionResult> GetDiscountCouponById(int id)
         {
             var value = await _discountService.GetByIdDiscountCouponAsync(id);
@@ -51,6 +51,24 @@ namespace MultiShop.Discount.Controllers
         public async Task<IActionResult> GetDiscountCouponByCode(string code)
         {
             var value = await _discountService.GetByCouponCodeAndIsValidDiscountCouponAsync(code);
+            return Ok(value);
+        }
+        [HttpGet("GetDiscountCouponsCount")]
+        public async Task<IActionResult> GetDiscountCouponsCount()
+        {
+            var value = await _discountService.GetDiscountCouponsCount();
+            return Ok(value);
+        }
+        [HttpGet("GetActiveDiscountCouponsCount")]
+        public async Task<IActionResult> GetActiveDiscountCouponsCount()
+        {
+            var value = await _discountService.GetActiveDiscountCouponsCount();
+            return Ok(value);
+        }
+        [HttpGet("GetPassiveDiscountCouponsCount")]
+        public async Task<IActionResult> GetPassiveDiscountCouponsCount()
+        {
+            var value = await _discountService.GetPassiveDiscountCouponsCount();
             return Ok(value);
         }
     }
