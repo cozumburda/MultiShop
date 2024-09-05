@@ -3,7 +3,7 @@
 <p>MultiShop E-Ticaret projesi, kullanıcıların oturum açarak veya ziyaretçi olarak siteye giriş yapmalarını sağlayan, kapsamlı bir e-ticaret alışveriş platformudur. Kullanıcılar, ürünler içerisinden diledikleri ürünleri arayabilir, listeleyebilir ve sepetlerine ekleyebilir sepet içerisinde güncelleme yapabilirler. Alışveriş sürecinin sonunda, kullanıcılar siparişlerini güvenle oluşturabilir, fatura ve sevk adresi bilgilerini güncelleyebilirler. Site yöneticisi ile mesajlaşabilirler. Siparişlerini kullanıcı panelinden takip edebilirler.</p>
 <p>
     Bu projede, tüm mikroservisler ASP.NET Core Web API 6.0 ile yazıldı ve MVC tarafında tüketildiği bir mimariye sahiptir. Her mikroserviste, farklı mimari ve tasarım desenleri uygulanmıştır. Kullanılan mimariler arasında Tek Katmanlı, N Katmanlı ve Onion Mimari yer almıştır. Repository, CQRS ve Mediator tasarım desenleri uygulamada kullanılmıştır. Ayrıca, 5 farklı veritabanı ile uygulamanın içeriği zenginleştirilmiştir, bu da esneklik ve ölçeklenebilirlik sağlamaktadır.
-</p>
+</p> 
 <h5>Kullanılan Teknolojiler</h5>
 <ul>
     <li>Asp.Net Core 6.0</li>
