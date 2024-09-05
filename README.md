@@ -1,4 +1,4 @@
-<div class="container p-2">
+<div class="container">
     <h3>MultiShop - E-Ticaret Alışveriş Sitesi (Microservice)</h3>
     <h5>Projenin Temel Amacı</h5>
     <p style="text-align:justify">MultiShop E-Ticaret projesi, kullanıcıların oturum açarak veya ziyaretçi olarak siteye giriş yapmalarını sağlayan, kapsamlı bir e-ticaret alışveriş platformudur. Kullanıcılar, ürünler içerisinden diledikleri ürünleri arayabilir, listeleyebilir ve sepetlerine ekleyebilir sepet içerisinde güncelleme yapabilirler. Alışveriş sürecinin sonunda, kullanıcılar siparişlerini güvenle oluşturabilir, fatura ve sevk adresi bilgilerini güncelleyebilirler. Site yöneticisi ile mesajlaşabilirler. Siparişlerini kullanıcı panelinden takip edebilirler.</p>
