@@ -36,7 +36,7 @@ using MultiShop.WebUI.SignalRHubs;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddHttpClient();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
 {
     opt.LoginPath = "/Login/Index/";
@@ -54,6 +54,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     opt.ExpireTimeSpan = TimeSpan.FromDays(5);
     opt.Cookie.Name = "MultiShopCookie";
     opt.SlidingExpiration = true;
+    opt.AccessDeniedPath = "/Pages/AccessDenied/";
 });
 
 builder.Services.AddAccessTokenManagement();
@@ -75,7 +76,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddHttpClient<IIdentityService, IdentityService>();
 
-builder.Services.AddHttpClient();
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
@@ -239,6 +240,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseStatusCodePagesWithReExecute("/Pages/Error404/");
 app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -246,8 +249,8 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-var supportedCultures = new[] { "en", "fr", "de", "tr","it" };
-var localizationOptions=new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[3]).AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
+var supportedCultures = new[] { "en", "fr", "de", "tr", "it" };
+var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[3]).AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
 
 app.UseRequestLocalization(localizationOptions);
 

@@ -29,21 +29,21 @@
     <div class="border-bottom pb-2">
         <div class="d-flex justify-content-between mb-3">
             <h6>Toplam Ürün Fiyatı</h6>
-            <h6>@total.ToString("C")</h6>
+            <h6>₺ @total.ToString("#,##0.#0")</h6>
         </div>
         <div class="d-flex justify-content-between pb-2">
             <h6 class="font-weight-medium">İndirim (%@Model.DiscountRate)</h6>
-            <h6 class="font-weight-medium">@discount.ToString("C")</h6>
+            <h6 class="font-weight-medium">₺ @discount.ToString("#,##0.#0")</h6>
         </div>
         <div class="d-flex justify-content-between">
             <h6 class="font-weight-medium">KDV (%10)</h6>
-            <h6 class="font-weight-medium">@kDV.ToString("C")</h6>
+            <h6 class="font-weight-medium">₺ @kDV.ToString("#,##0.#0")</h6>
         </div>
     </div>
     <div class="pt-2">
         <div class="d-flex justify-content-between mt-2">
             <h5>Toplam</h5>
-            <h5>@totalPrice.ToString("C")</h5>
+            <h5>₺ @totalPrice.ToString("#,##0.#0")</h5>
         </div>
         <form method="post" action="/Order/Index/">
             <input type="hidden" name="discountRate" value="@Model.DiscountRate" />

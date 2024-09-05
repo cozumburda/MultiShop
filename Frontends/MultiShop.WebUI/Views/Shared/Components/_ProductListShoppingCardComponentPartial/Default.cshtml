@@ -33,7 +33,7 @@
                     total = item.Quantity * item.Price;
                     <tr>
                         <td class="align-middle"><img src="@item.ImageUrl" alt="" style="width: 50px; height:60px">@item.ProductName</td>
-                        <td class="align-middle">@item.Price.ToString("C")</td>
+                        <td class="align-middle">₺ @item.Price.ToString("#,##0.#0")</td>
                         <td class="align-middle">
                             <div class="input-group quantity mx-auto" style="width: 100px;">
                                 <div class="input-group-btn">
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="align-middle">@total.ToString("C")</td>
+                        <td class="align-middle">₺ @total.ToString("#,##0.#0")</td>
                         <td class="align-middle"><button class="btn btn-sm btn-danger" onclick="removebasket(@count)"><i class="fa fa-times"></i></button></td>
                     </tr>
                 }
