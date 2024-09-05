@@ -63,4 +63,5 @@
     <li>Site yöneticisi admin panelinden tüm güncellemeleri yapabilir, istatistikleri görebilir, yorumları kontrol edebilir, ürün araması yaparak ürünlerin güncel fiyatlarına api üzerinden ulaşabilir.</li>
     <li>Site yöneticisi kargo adreslerini kullanıcının belirlediği adres olarak güncelleyebilir. Tüm siparişleri kontrol edebilir.</li>            
 </ul>
-![home](https://github.com/user-attachments/assets/2e6eab99-2616-4e83-a873-b75465647158)
+![home](https://github.com/user-attachments/assets/48267a0a-144d-4521-9dfc-69b319b482ac)
+![ProductList](https://github.com/user-attachments/assets/1971d0ae-c56b-454d-a906-0144477779e2)
