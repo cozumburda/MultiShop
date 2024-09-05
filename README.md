@@ -63,7 +63,7 @@
     <li>Site yöneticisi admin panelinden tüm güncellemeleri yapabilir, istatistikleri görebilir, yorumları kontrol edebilir, ürün araması yaparak ürünlerin güncel fiyatlarına api üzerinden ulaşabilir.</li>
     <li>Site yöneticisi kargo adreslerini kullanıcının belirlediği adres olarak güncelleyebilir. Tüm siparişleri kontrol edebilir.</li>            
 </ul>
-<h5>Ekran Görüntüleri :</h5>
+<h5>Ekran Görüntüleri : </h5>
 ![home](https://github.com/user-attachments/assets/48267a0a-144d-4521-9dfc-69b319b482ac)
 ![UI1](https://github.com/user-attachments/assets/db0b5557-1e3a-4065-9b28-c68df4d79de4)
 ![UI2](https://github.com/user-attachments/assets/4a644214-debf-4436-ba6e-6988d14ef198)
